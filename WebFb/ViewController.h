@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <CDRTranslucentSideBarDelegate, MenuViewControllerDelegate>
+@interface ViewController : UIViewController <CDRTranslucentSideBarDelegate, MenuViewControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loading;

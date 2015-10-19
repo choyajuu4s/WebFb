@@ -27,6 +27,7 @@
     //Set
     self.showRightMenu = NO;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DEFAULT_URL]]];
+    self.webView.scrollView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,6 +85,29 @@
 -(void)webViewDidFinishLoad:(UIWebView*)webView {
     [_webView setHidden:NO];
     [_loading setHidden:YES];
+}
+
+#pragma mark - UIScrollView Delegate
+
+#define ADJUST_Y 44.0
+static float begin_y = NAN;
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    begin_y = scrollView.contentOffset.y;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    float end_y = scrollView.contentOffset.y;
+    if ( begin_y - end_y + ADJUST_Y < 0 ) {
+        //Hide
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+//        NSLog(@"Hide %f - %f = %f", begin_y, end_y, begin_y - end_y);
+    } else {
+        //Show
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//        NSLog(@"Show %f - %f = %f", begin_y, end_y, begin_y - end_y);
+    }
 }
 
 #pragma mark - Side Menu
