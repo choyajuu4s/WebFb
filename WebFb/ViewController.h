@@ -17,18 +17,25 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loading;
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonBack;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonFoword;
+
 - (IBAction)pressedTitleButton:(UIButton *)sender;
 - (IBAction)pressedReloadButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedBackButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedFowordButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedShareButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedMenuButton:(UIBarButtonItem *)sender;
+- (IBAction)pressedCloseButton:(UIBarButtonItem *)sender;
 
 //Menu
 @property (nonatomic, strong) MenuViewController*  rightController;
 
 //MenuViewControllerDelegate
 - (void)didTapMenuSelectedRow:(int)row;
+
+//Segue
+- (void)callModal:(id)sender;
 
 @end
 

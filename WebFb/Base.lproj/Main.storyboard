@@ -6,10 +6,10 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,29 +23,27 @@
                                 </connections>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="VNK-wZ-Vh5">
-                                <rect key="frame" x="142" y="297" width="37" height="37"/>
+                                <rect key="frame" x="142" y="64" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.30588235289999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="BKf-pC-EOy">
                         <nil key="title"/>
                         <leftBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="Mgm-uR-JfS">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="pressedReloadButton:" destination="BYZ-38-t0r" id="d6Q-kD-LUb"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="＜" id="HE2-uG-woR">
+                            <barButtonItem enabled="NO" title="＜" id="HE2-uG-woR">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="pressedBackButton:" destination="BYZ-38-t0r" id="CCU-87-S5D"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="＞" id="v5G-21-wWC">
+                            <barButtonItem enabled="NO" title=" " width="20" style="plain" id="XCm-m4-xIG">
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="＞" id="v5G-21-wWC">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="pressedFowordButton:" destination="BYZ-38-t0r" id="YfA-bb-fsC"/>
@@ -79,10 +77,14 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="buttonBack" destination="HE2-uG-woR" id="qGd-23-oGQ"/>
+                        <outlet property="buttonFoword" destination="v5G-21-wWC" id="vSc-qf-Xpc"/>
                         <outlet property="loading" destination="VNK-wZ-Vh5" id="iPH-FC-8Lg"/>
                         <outlet property="webView" destination="Ube-6Q-o5r" id="czn-Lh-TLR"/>
+                        <segue destination="grg-sN-qGw" kind="modal" identifier="CallModal" id="avk-KP-kIR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -151,7 +153,112 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bY8-Lj-chH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="171" y="917"/>
+            <point key="canvasLocation" x="160" y="974"/>
+        </scene>
+        <!--Modal-->
+        <scene sceneID="3Cp-eH-GSr">
+            <objects>
+                <viewController storyboardIdentifier="Modal" title="Modal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iq0-HN-fiQ" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zW0-gy-fLr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="bzi-sh-g2c">
+                                <rect key="frame" x="142" y="64" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                            <webView hidden="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="FJS-d5-uTB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.30588235289999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="iq0-HN-fiQ" id="0Em-6D-H5E"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2156862745" green="0.30588235289999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="yw7-y0-Iez">
+                        <nil key="title"/>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Close" style="plain" id="9Y3-Yg-aWD">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="pressedCloseButton:" destination="iq0-HN-fiQ" id="AI2-zf-mjd"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="＜" id="vcO-yL-7h3">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="pressedBackButton:" destination="iq0-HN-fiQ" id="8s2-m9-Ner"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="＞" id="n9u-cX-jyA">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="pressedFowordButton:" destination="iq0-HN-fiQ" id="WKU-ri-6YT"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <button key="titleView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ejc-vL-ghK">
+                            <rect key="frame" x="144" y="6" width="33" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="32"/>
+                            <state key="normal" title="fb">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="pressedTitleButton:" destination="iq0-HN-fiQ" eventType="touchUpInside" id="xTP-33-Yaz"/>
+                            </connections>
+                        </button>
+                        <rightBarButtonItems>
+                            <barButtonItem image="menu" id="2fE-Mm-GN0">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="pressedMenuButton:" destination="iq0-HN-fiQ" id="OSh-1d-vL0"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="GMf-TX-5uj">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="pressedShareButton:" destination="iq0-HN-fiQ" id="1Wd-Jv-XeE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="buttonBack" destination="vcO-yL-7h3" id="NLA-2I-T21"/>
+                        <outlet property="buttonFoword" destination="n9u-cX-jyA" id="Z8U-x2-j3n"/>
+                        <outlet property="loading" destination="bzi-sh-g2c" id="F2x-CW-8yc"/>
+                        <outlet property="webView" destination="FJS-d5-uTB" id="RhI-JE-HJA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1zo-iS-U8F" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="869" y="917"/>
+        </scene>
+        <!--ModalNavigation-->
+        <scene sceneID="zn3-IV-u2v">
+            <objects>
+                <navigationController storyboardIdentifier="ModalNavigation" title="ModalNavigation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="grg-sN-qGw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TD1-Tz-ntz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HEn-Ru-LlF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2156862745" green="0.30588235289999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iq0-HN-fiQ" kind="relationship" relationship="rootViewController" id="bTl-Ol-rqM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RkR-2U-EOF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="917"/>
         </scene>
     </scenes>
     <resources>

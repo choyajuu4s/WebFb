@@ -16,6 +16,7 @@
 @implementation ViewController
 
 #define DEFAULT_URL @"https://www.facebook.com/"
+#define DEFAULT_HTTPNAME @"facebook.com"
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,6 +69,10 @@
     }
 }
 
+- (IBAction)pressedCloseButton:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Share
 
 - (void)displayActivityControllerWithDataObject:(id)obj {
@@ -85,10 +90,65 @@
 -(void)webViewDidFinishLoad:(UIWebView*)webView {
     [_webView setHidden:NO];
     [_loading setHidden:YES];
+    
+    if(webView.canGoBack == YES){
+        _buttonBack.enabled = YES;
+    }else{
+        _buttonBack.enabled = NO;
+    }
+    
+    if(webView.canGoForward == YES){
+        _buttonFoword.enabled = YES;
+    }else{
+        _buttonFoword.enabled = NO;
+    }
+}
+
+#if 0//様子見
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    bool flag = YES;
+    // リンクがクリックされたとき
+    if (navigationType == UIWebViewNavigationTypeLinkClicked /*||
+        navigationType == UIWebViewNavigationTypeOther*/) {
+        //Facebook
+        if ( [self isCheckURL:[request URL] checkUrlString:DEFAULT_URL] ) {
+            NSLog(@"Facebook");
+            flag = YES;
+        } else {
+            //Facebook以外
+            NSLog(@"Facebook以外");
+            [self performSelector:@selector(callModal:) withObject:self afterDelay:0.1];
+            flag = NO;
+        }
+    }
+    
+    return flag;
+}
+
+- (void)callModal:(id)sender {
+    [self performSegueWithIdentifier:@"CallModal" sender:sender];
+}
+#endif
+
+#pragma mark - Check
+
+- (BOOL)isCheckURL:(NSURL *)url checkUrlString:(NSString*)checkUrlString
+{
+    NSString *urlString = [url absoluteString];
+    
+    // 指定のページか?
+    NSRange range = [urlString rangeOfString:checkUrlString];
+    if (range.location != NSNotFound) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - UIScrollView Delegate
 
+#define RELOAD_OFFSET 200.0
 #define ADJUST_Y 44.0
 static float begin_y = NAN;
 
@@ -99,14 +159,21 @@ static float begin_y = NAN;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     float end_y = scrollView.contentOffset.y;
-    if ( begin_y - end_y + ADJUST_Y < 0 ) {
+    if ( begin_y - end_y + ADJUST_Y < -10 ) {
         //Hide
         [self.navigationController setNavigationBarHidden:YES animated:YES];
 //        NSLog(@"Hide %f - %f = %f", begin_y, end_y, begin_y - end_y);
-    } else {
+    } else if ( begin_y - end_y + ADJUST_Y > 10 ) {
         //Show
         [self.navigationController setNavigationBarHidden:NO animated:YES];
 //        NSLog(@"Show %f - %f = %f", begin_y, end_y, begin_y - end_y);
+    }
+    
+    //Reload
+    if (scrollView.contentOffset.y < -RELOAD_OFFSET)
+    {
+        //Call Reload
+        [self pressedReloadButton:nil];
     }
 }
 
