@@ -10,7 +10,8 @@
 
 @protocol MenuViewControllerDelegate <NSObject>
 
-- (void)didTapMenuSelectedRow:(int)row;
+- (void)didTapMenuSelectedUrl:(NSString*)url;
+//- (void)didTapMenuSelectedRow:(int)row;
 
 @end
 

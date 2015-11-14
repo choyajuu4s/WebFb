@@ -17,6 +17,9 @@
 		701F14771BD564A500342E9F /* WebFbUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14761BD564A500342E9F /* WebFbUITests.m */; };
 		701F148A1BD5753D00342E9F /* CDRTranslucentSideBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14871BD5753D00342E9F /* CDRTranslucentSideBar.m */; };
 		701F148B1BD5753D00342E9F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14891BD5753D00342E9F /* MenuViewController.m */; };
+		70F8CE341BF716ED0068918D /* SettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F8CE331BF716ED0068918D /* SettingManager.m */; };
+		70F8CE3B1BF7179E0068918D /* FBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F8CE381BF7179E0068918D /* FBObject.m */; };
+		70F8CE3C1BF7179E0068918D /* FBHistoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F8CE3A1BF7179E0068918D /* FBHistoryData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,13 @@
 		701F14871BD5753D00342E9F /* CDRTranslucentSideBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRTranslucentSideBar.m; sourceTree = "<group>"; };
 		701F14881BD5753D00342E9F /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		701F14891BD5753D00342E9F /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		70F8CE321BF716ED0068918D /* SettingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingManager.h; sourceTree = "<group>"; };
+		70F8CE331BF716ED0068918D /* SettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingManager.m; sourceTree = "<group>"; };
+		70F8CE371BF7179E0068918D /* FBObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBObject.h; sourceTree = "<group>"; };
+		70F8CE381BF7179E0068918D /* FBObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBObject.m; sourceTree = "<group>"; };
+		70F8CE391BF7179E0068918D /* FBHistoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBHistoryData.h; sourceTree = "<group>"; };
+		70F8CE3A1BF7179E0068918D /* FBHistoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBHistoryData.m; sourceTree = "<group>"; };
+		70F8CE3F1BF71A140068918D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,8 @@
 		701F14501BD564A500342E9F /* WebFb */ = {
 			isa = PBXGroup;
 			children = (
+				70F8CE351BF7179E0068918D /* Object */,
+				70F8CE311BF716ED0068918D /* SettingManager */,
 				701F14841BD5753D00342E9F /* Libraries */,
 				701F14541BD564A500342E9F /* AppDelegate.h */,
 				701F14551BD564A500342E9F /* AppDelegate.m */,
@@ -125,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				701F14521BD564A500342E9F /* main.m */,
+				70F8CE3F1BF71A140068918D /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -164,6 +177,34 @@
 				701F14891BD5753D00342E9F /* MenuViewController.m */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		70F8CE311BF716ED0068918D /* SettingManager */ = {
+			isa = PBXGroup;
+			children = (
+				70F8CE321BF716ED0068918D /* SettingManager.h */,
+				70F8CE331BF716ED0068918D /* SettingManager.m */,
+			);
+			path = SettingManager;
+			sourceTree = "<group>";
+		};
+		70F8CE351BF7179E0068918D /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				70F8CE361BF7179E0068918D /* SaveObject */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		70F8CE361BF7179E0068918D /* SaveObject */ = {
+			isa = PBXGroup;
+			children = (
+				70F8CE371BF7179E0068918D /* FBObject.h */,
+				70F8CE381BF7179E0068918D /* FBObject.m */,
+				70F8CE391BF7179E0068918D /* FBHistoryData.h */,
+				70F8CE3A1BF7179E0068918D /* FBHistoryData.m */,
+			);
+			path = SaveObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,9 +339,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				701F148A1BD5753D00342E9F /* CDRTranslucentSideBar.m in Sources */,
+				70F8CE3C1BF7179E0068918D /* FBHistoryData.m in Sources */,
+				70F8CE3B1BF7179E0068918D /* FBObject.m in Sources */,
 				701F14591BD564A500342E9F /* ViewController.m in Sources */,
 				701F14561BD564A500342E9F /* AppDelegate.m in Sources */,
 				701F14531BD564A500342E9F /* main.m in Sources */,
+				70F8CE341BF716ED0068918D /* SettingManager.m in Sources */,
 				701F148B1BD5753D00342E9F /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = WebFb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -456,6 +501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = WebFb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

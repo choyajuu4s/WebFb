@@ -50,7 +50,7 @@
 	self.isCurrentPanGestureTarget = NO;
     
     self.view.backgroundColor = [UIColor clearColor];
-	self.sideBarWidth = 175;
+	self.sideBarWidth = 260;
 	self.animationDuration = 0.25f;
 
 	[self initTranslucentView];

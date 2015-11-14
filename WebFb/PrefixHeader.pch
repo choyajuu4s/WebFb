@@ -1,0 +1,73 @@
+//
+//  PrefixHeader.pch
+//  QBar
+//
+//  Created by Toshihide Iizuka on 2015/10/03.
+//  Copyright © 2015年 ZILAPP. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//Import
+#import "AppDelegate.h"
+//#import "UIColor+Hex.h"
+
+#import "FBObject.h"
+#import "FBHistoryData.h"
+
+//#import "RMUniversalAlert.h"
+
+#import "SettingManager.h"
+
+//Debug
+#ifdef DEBUG
+#define LOG(fmt,...) NSLog((@"%s %d "fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define LOG(fmt,...)
+#endif
+
+#define APP_DELEGATE (AppDelegate*)[[UIApplication sharedApplication] delegate]
+
+//Lang
+#define kLanguage NSLocalizedString(@"lang",nil)
+#define kLanguageEnglishFlag ([kLanguage isEqualToString:@"English"])
+#define kLanguageJapaneseFlag ([kLanguage isEqualToString:@"Japanese"])
+
+//Title
+#define kNavigationTitleDefault @"webFB"
+
+//Translucent
+#define kTranslucent_alpha 0.8
+
+//ScreenSize
+enum SCREENSIZE_STATE {
+    SCREEN_3_5 = 480,
+    SCREEN_4_0 = 568,
+    SCREEN_4_7 = 667,
+    SCREEN_5_5 = 736,
+};
+
+//View Height
+#define VIEW_HEIGHT self.view.frame.size.height
+
+//Waiting
+#define kTapSidemenu_waitinginterval 0.1
+
+//Share
+#define SHARE_MARK @"#webfb"
+
+//History
+#define HISTORY_DATACOUNT 1000//保存データ上限(0~10000で指定)
+
+//TrashImage 編集時の画像
+#define TRASHIMAGE_ON [UIImage imageNamed:@"icn_ok_w"]
+
+//Purchase
+#define kChangePurchaseNotification @"kChangePurchaseNotification"
+
+//End
+#endif /* PrefixHeader_pch */

@@ -6,6 +6,7 @@
 //  Copyright © 2015年 chopayer. All rights reserved.
 //
 
+#import "HistoryViewController.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+#if 0//不使用
     //Navigation Bar Translucent
     [self.navigationController.navigationBar setBarTintColor:[UIColor clearColor]];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
@@ -29,6 +31,7 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.alpha        = 1.0;
     self.navigationController.navigationBar.translucent  = YES;
+#endif
     
     //Side Menu Set
     [self setSideMenu];
@@ -67,7 +70,7 @@
 
 - (IBAction)pressedShareButton:(UIBarButtonItem *)sender {
     NSString* url = [_webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
-    NSString* text = [NSString stringWithFormat:@"%@ by WebFb", url];
+    NSString* text = [NSString stringWithFormat:@"%@ by %@", url, SHARE_MARK];
     [self displayActivityControllerWithDataObject:text];
 }
 
@@ -129,17 +132,30 @@
     [_webView setHidden:NO];
     [_loading setHidden:YES];
     
-    if(webView.canGoBack == YES){
-        _buttonBack.enabled = YES;
-    }else{
-        _buttonBack.enabled = NO;
+    @try {
+        //History
+        FBHistoryData* history = [[FBHistoryData alloc] init];
+        history->title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];;
+        history->url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];;
+        [history generate];
+        [[SettingManager sharedManager] setHistoryArrayWithObject:history];
+    }
+    @catch (NSException *exception) {
+    }
+    @finally {
     }
     
-    if(webView.canGoForward == YES){
-        _buttonFoword.enabled = YES;
-    }else{
-        _buttonFoword.enabled = NO;
-    }
+//    if(webView.canGoBack == YES){
+//        _buttonBack.enabled = YES;
+//    }else{
+//        _buttonBack.enabled = NO;
+//    }
+//    
+//    if(webView.canGoForward == YES){
+//        _buttonFoword.enabled = YES;
+//    }else{
+//        _buttonFoword.enabled = NO;
+//    }
 }
 
 #if 0//様子見
@@ -184,6 +200,7 @@
     }
 }
 
+#if 0//不使用
 #pragma mark - UIScrollView Delegate
 
 #define RELOAD_OFFSET 200.0
@@ -214,6 +231,7 @@ static float begin_y = NAN;
         [self pressedReloadButton:nil];
     }
 }
+#endif
 
 #pragma mark - Side Menu
 
@@ -230,7 +248,12 @@ static float begin_y = NAN;
     [self.rightSideBar setContentViewInSideBar:_rightController.view];
 }
 
-- (void)didTapMenuSelectedRow:(int)row {
+//- (void)didTapMenuSelectedRow:(int)row {
+//}
+
+- (void)didTapMenuSelectedUrl:(NSString *)url {
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [self.rightSideBar dismissAnimated:YES];
 }
 
 @end
