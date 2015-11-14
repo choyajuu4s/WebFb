@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="37T-go-ftA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="37T-go-ftA">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -15,9 +15,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView hidden="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="Ube-6Q-o5r">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="-44" width="320" height="614"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.2156862745" green="0.30588235289999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="W2M-mQ-Ag2"/>
                                 </connections>
@@ -33,43 +33,19 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BKf-pC-EOy">
                         <nil key="title"/>
-                        <leftBarButtonItems>
-                            <barButtonItem enabled="NO" title="＜" id="HE2-uG-woR">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="pressedBackButton:" destination="BYZ-38-t0r" id="CCU-87-S5D"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" title=" " width="20" style="plain" id="XCm-m4-xIG">
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" title="＞" id="v5G-21-wWC">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="pressedFowordButton:" destination="BYZ-38-t0r" id="YfA-bb-fsC"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <button key="titleView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QKI-oe-Rg3">
-                            <rect key="frame" x="144" y="6" width="33" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="32"/>
-                            <state key="normal" title="fb">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="pressedTitleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9xr-cp-3ww"/>
-                            </connections>
-                        </button>
                         <rightBarButtonItems>
-                            <barButtonItem image="menu" id="95r-7S-ORc">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="pressedMenuButton:" destination="BYZ-38-t0r" id="C1Y-02-qKF"/>
-                                </connections>
+                            <barButtonItem style="plain" id="FQP-Qz-NS0">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="agb-Zy-WsA">
+                                    <rect key="frame" x="280" y="10" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="menu"/>
+                                    <connections>
+                                        <action selector="pressedMenuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2sU-9K-PoR"/>
+                                    </connections>
+                                </button>
                             </barButtonItem>
                             <barButtonItem systemItem="action" id="j3C-Cu-EJc">
+                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="pressedShareButton:" destination="BYZ-38-t0r" id="Fbk-Tl-TkS"/>
@@ -80,8 +56,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="buttonBack" destination="HE2-uG-woR" id="qGd-23-oGQ"/>
-                        <outlet property="buttonFoword" destination="v5G-21-wWC" id="vSc-qf-Xpc"/>
                         <outlet property="loading" destination="VNK-wZ-Vh5" id="iPH-FC-8Lg"/>
                         <outlet property="webView" destination="Ube-6Q-o5r" id="czn-Lh-TLR"/>
                         <segue destination="grg-sN-qGw" kind="modal" identifier="CallModal" id="avk-KP-kIR"/>
@@ -98,7 +72,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Pr-hg-URR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.21568627450980393" green="0.30588235294117649" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aQ2-jN-3TA"/>
@@ -203,7 +178,7 @@
                             </barButtonItem>
                         </leftBarButtonItems>
                         <button key="titleView" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ejc-vL-ghK">
-                            <rect key="frame" x="144" y="6" width="33" height="32"/>
+                            <rect key="frame" x="130" y="6" width="8" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="32"/>
@@ -262,6 +237,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menu" width="32" height="32"/>
+        <image name="menu" width="100" height="92"/>
     </resources>
 </document>

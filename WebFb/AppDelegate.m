@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [NSThread sleepForTimeInterval:1.0];
     return YES;
 }
 

@@ -22,6 +22,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //Navigation Bar Translucent
+    [self.navigationController.navigationBar setBarTintColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    self.navigationController.navigationBar.alpha        = 1.0;
+    self.navigationController.navigationBar.translucent  = YES;
+    
     //Side Menu Set
     [self setSideMenu];
     
@@ -29,6 +37,9 @@
     self.showRightMenu = NO;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:DEFAULT_URL]]];
     self.webView.scrollView.delegate = self;
+    
+    //Set touch events
+    [self setFlickGesture];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +82,33 @@
 
 - (IBAction)pressedCloseButton:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma - Touch Event
+
+- (void)setFlickGesture
+{
+    // 右へスワイプ
+    UISwipeGestureRecognizer* swipeRightGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRightGesture:)];
+    swipeRightGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRightGesture];
+    swipeRightGesture = nil;
+    
+    // 左へスワイプ
+    UISwipeGestureRecognizer* swipeLeftGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeftGesture:)];
+    swipeLeftGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeftGesture];
+    swipeLeftGesture = nil;
+}
+
+- (void) handleSwipeRightGesture:(UISwipeGestureRecognizer *)sender
+{
+    [self pressedBackButton:nil];
+}
+
+- (void) handleSwipeLeftGesture:(UISwipeGestureRecognizer *)sender
+{
+    [self pressedFowordButton:nil];
 }
 
 #pragma mark - Share
@@ -125,11 +163,11 @@
     
     return flag;
 }
+#endif
 
 - (void)callModal:(id)sender {
     [self performSegueWithIdentifier:@"CallModal" sender:sender];
 }
-#endif
 
 #pragma mark - Check
 

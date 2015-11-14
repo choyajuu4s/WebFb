@@ -21,11 +21,11 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonFoword;
 
 - (IBAction)pressedTitleButton:(UIButton *)sender;
+- (IBAction)pressedMenuButton:(UIButton *)sender;
 - (IBAction)pressedReloadButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedBackButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedFowordButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedShareButton:(UIBarButtonItem *)sender;
-- (IBAction)pressedMenuButton:(UIBarButtonItem *)sender;
 - (IBAction)pressedCloseButton:(UIBarButtonItem *)sender;
 
 //Menu

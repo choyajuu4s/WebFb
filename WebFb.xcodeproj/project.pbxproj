@@ -15,8 +15,8 @@
 		701F14611BD564A500342E9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701F145F1BD564A500342E9F /* LaunchScreen.storyboard */; };
 		701F146C1BD564A500342E9F /* WebFbTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F146B1BD564A500342E9F /* WebFbTests.m */; };
 		701F14771BD564A500342E9F /* WebFbUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14761BD564A500342E9F /* WebFbUITests.m */; };
-		701F148A1BD5753D00342E9F /* CDRTranslucentSideBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14871BD5753D00342E9F /* CDRTranslucentSideBar.m */; settings = {ASSET_TAGS = (); }; };
-		701F148B1BD5753D00342E9F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14891BD5753D00342E9F /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
+		701F148A1BD5753D00342E9F /* CDRTranslucentSideBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14871BD5753D00342E9F /* CDRTranslucentSideBar.m */; };
+		701F148B1BD5753D00342E9F /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 701F14891BD5753D00342E9F /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +233,7 @@
 				TargetAttributes = {
 					701F144D1BD564A500342E9F = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = T6NS544HJH;
 					};
 					701F14661BD564A500342E9F = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -439,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = WebFb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -452,6 +454,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = WebFb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
